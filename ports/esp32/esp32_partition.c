@@ -252,6 +252,10 @@ static MP_DEFINE_CONST_FUN_OBJ_1(esp32_partition_set_boot_obj, esp32_partition_s
 
 static mp_obj_t esp32_partition_get_next_update(mp_obj_t self_in) {
     esp32_partition_obj_t *self = MP_OBJ_TO_PTR(self_in);
+    if (esp_ota_get_next_update_partition(self->part)->subtype > ESP_PARTITION_SUBTYPE_APP_OTA_1) {
+        // printf("Only partition subtypes OTA_0 and OTA_1 are updateable on the Fri3D Camp Badge, yet higher ones might be present for use by additional apps. Wrapping back around to OTA_0.\n");
+        return MP_OBJ_FROM_PTR(esp32_partition_new(esp_partition_find_first(ESP_PARTITION_TYPE_APP, ESP_PARTITION_SUBTYPE_APP_OTA_0, NULL), NATIVE_BLOCK_SIZE_BYTES));
+    }
     return MP_OBJ_FROM_PTR(esp32_partition_new(esp_ota_get_next_update_partition(self->part), NATIVE_BLOCK_SIZE_BYTES));
 }
 static MP_DEFINE_CONST_FUN_OBJ_1(esp32_partition_get_next_update_obj, esp32_partition_get_next_update);
