@@ -71,6 +71,9 @@
 [submodule "fri3d/st7789_mpy"]
 	path = fri3d/st7789_mpy
 	url = https://github.com/russhughes/st7789_mpy.git
+[submodule "fri3d/micropython-lis2hh12"]
+	path = fri3d/micropython-lis2hh12
+	url = https://github.com/tuupola/micropython-lis2hh12
 [submodule "fri3d/lvgl_esp32_mpy"]
 	path = fri3d/lvgl_esp32_mpy
 	url = https://github.com/MathyV/lvgl_esp32_mpy.git

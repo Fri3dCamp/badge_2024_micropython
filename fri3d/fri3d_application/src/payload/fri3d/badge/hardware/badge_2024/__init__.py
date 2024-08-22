@@ -4,6 +4,7 @@ from .communicator import hardware_communicator
 from .display import hardware_display
 from .i2c import hardware_i2c
 from .i2s import hardware_i2s
+from .imu import hardware_accelero
 from .joystick import hardware_joystick
 from .leds import hardware_leds
 from .onboard_buttons import hardware_onboard_buttons
